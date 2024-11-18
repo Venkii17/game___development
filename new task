@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function prototypes
+void printIntro();
+int makeChoice();
+void displayScore(int score);
+
+int main() {
+    int score = 0;
+    int choice;
+
+    printIntro();
+
+    // First decision
+    printf("You wake up in a dark dungeon. There are two doors in front of you.\n");
+    printf("1. Open the left door.\n");
+    printf("2. Open the right door.\n");
+    choice = makeChoice();
+
+    if (choice == 1) {
+        printf("You enter a room filled with treasure! Your score increases by 10 points.\n");
+        score += 10;
+    } else if (choice == 2) {
+        printf("You walk into a trap! Game over.\n");
+        displayScore(score);
+        return 0;
+    } else {
+        printf("Invalid choice. Game over.\n");
+        return 0;
+    }
+
+    // Second decision
+    printf("\nYou see a staircase leading up and a tunnel going deeper.\n");
+    printf("1. Take the staircase.\n");
+    printf("2. Enter the tunnel.\n");
+    choice = makeChoice();
+
+    if (choice == 1) {
+        printf("You find an exit and escape the dungeon! Your score increases by 20 points.\n");
+        score += 20;
+    } else if (choice == 2) {
+        printf("You encounter a monster and lose. Game over.\n");
+        displayScore(score);
+        return 0;
+    } else {
+        printf("Invalid choice. Game over.\n");
+        return 0;
+    }
+
+    // Game completion
+    printf("\nCongratulations! You escaped the dungeon.\n");
+    displayScore(score);
+    return 0;
+}
+
+void printIntro() {
+    printf("Welcome to Dungeon Escape!\n");
+    printf("Make the right choices to escape and increase your score.\n");
+    printf("Be careful—one wrong move can end the game!\n\n");
+}
+
+int makeChoice() {
+    int choice;
+    printf("Enter your choice (1 or 2): ");
+    scanf("%d", &choice);
+    return choice;
+}
+
+void displayScore(int score) {
+    printf("\nYour final score: %d\n", score);
+    printf("Thanks for playing Dungeon Escape!\n");
+}
